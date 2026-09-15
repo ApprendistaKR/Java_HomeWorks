@@ -10,5 +10,10 @@ public class main {
         System.out.print("두 번째 숫자를 입력해주세요.");
         int num2 = sc.nextInt();
 
+        System.out.println("사칙연산 기호를 입력하세요: ");
+        String str = sc.nextLine();
+
+
+
     }
 }
