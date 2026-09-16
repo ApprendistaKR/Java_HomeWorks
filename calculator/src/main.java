@@ -25,13 +25,9 @@ public class main {
             System.out.println("결과: " + (num1 - num2));
         } else if ((c == '*') && (num2 != 0)) {
             System.out.println("결과: " + (num1 * num2));
-        } else if ((c == '*') && (num2 == 0)) {
-            System.out.println("곱셈 연산에서 숫자에 0이 입력될 수 없습니다.");
-        } else if ((c == '*') && (num1 == 0)) {
-            System.out.println("곱셈 연산에서 숫자에 0이 입력될 수 없습니다.");
         } else if ((c == '/') && (num2 != 0)) {
             System.out.println("결과: " + (num1 / num2));
-        } else if (num2 == 0) {
+        } else {
             System.out.println("나눗셈 연산에서 분모(두번째 숫자)에 0이 입력될 수 없습니다.");
         }
 
