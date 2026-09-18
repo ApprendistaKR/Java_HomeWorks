@@ -2,8 +2,6 @@ import java.util.Scanner;
 
 public class main {
     public static void main(String[] args) {
-
-
         Scanner sc = new Scanner(System.in);
         String str2 = "";
         while (!str2.equals("exit")) {
@@ -34,6 +32,5 @@ public class main {
             System.out.println("계속 계산하시겠습니까?\n(그만 두시려면 exit를, 계속하시려면 아무키나 입력해주세요)");
             str2 = sc.nextLine();
         }
-
     }
 }
