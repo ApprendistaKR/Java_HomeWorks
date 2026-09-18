@@ -19,7 +19,7 @@ public class main {
             String str = sc.nextLine();
             char c = str.charAt(0);
 
-            String result = cal.calculator(num1, num2, c);
+            String result = cal.getCal(num1, num2, c);
             System.out.println(result);
 
 

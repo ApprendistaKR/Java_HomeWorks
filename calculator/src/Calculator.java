@@ -1,7 +1,7 @@
 public class Calculator {
-    public String calculator (int num1, int num2, char c) {
+    private String calculator(int num1, int num2, char c) {
         if (c == '+') {
-            return ("결과: " + (num1+num2) );
+            return ("결과: " + (num1 + num2));
         } else if (c == '-') {
             return ("결과: " + (num1 - num2));
         } else if (c == '*') {
@@ -12,4 +12,7 @@ public class Calculator {
             return ("나눗셈 연산에서 분모(두번째 숫자)에 0이 입력될 수 없습니다.");
         }
     }
+        public String getCal(int num1, int num2, char c) {
+            return calculator(num1, num2, c);
+        }
 }
