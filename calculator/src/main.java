@@ -19,8 +19,8 @@ public class main {
             String str = sc.nextLine();
             char c = str.charAt(0);
 
-            String result = cal.getCal(num1, num2, c);
-            System.out.println(result);
+            String result = cal.calculator(num1, num2, c);
+            System.out.println("결과:" + result);
 
 
             System.out.println("계속 계산하시겠습니까?\n(그만 두시려면 exit를, 계속하시려면 아무키나 입력해주세요)");
