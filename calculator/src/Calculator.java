@@ -1,16 +1,16 @@
 import java.util.ArrayList;
 
 public class Calculator {
-    ArrayList<String> list = new ArrayList<String>();
+    private ArrayList<String> list = new ArrayList<String>();
     String result;
 
     String calculator(int num1, int num2, char c) {
         if (c == '+') {
-            this.result = " " + (num1+num2);
+            this.result = " " + (num1 + num2);
         } else if (c == '-') {
-            this.result = " "+ (num1-num2);
+            this.result = " " + (num1 - num2);
         } else if (c == '*') {
-            this.result = "" + (num1*num2);
+            this.result = "" + (num1 * num2);
         } else if ((c == '/') && (num2 != 0)) {
             this.result = " " + (num1 / num2);
         } else {
@@ -18,5 +18,11 @@ public class Calculator {
         }
         list.add(result);
         return result;
+    }
+    public ArrayList<String> getList() {
+        return list;
+    }
+    public ArrayList<String> setList () {
+        return  list;
     }
 }
