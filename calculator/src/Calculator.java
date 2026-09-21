@@ -22,7 +22,8 @@ public class Calculator {
     public ArrayList<String> getList() {
         return list;
     }
-    public ArrayList<String> setList () {
-        return  list;
+    public void setList(ArrayList<String> list) {
+        this.list = list;
+    }
     }
 }
