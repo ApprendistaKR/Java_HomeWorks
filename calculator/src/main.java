@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class main {
@@ -21,6 +22,7 @@ public class main {
 
             String result = cal.calculator(num1, num2, c);
             System.out.println("결과:" + result);
+            System.out.println("이전 결과:" + cal.getList());
 
 
             System.out.println("계속 계산하시겠습니까?\n(그만 두시려면 exit를, 계속하시려면 아무키나 입력해주세요)");
