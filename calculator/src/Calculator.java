@@ -5,7 +5,9 @@ public class Calculator {
     String result;
 
     String calculator(int num1, int num2, char c) {
-        if (c == '+') {
+        if((num1 < 0) && (num2 < 0)) {
+            this.result = ("음의 정수는 입력할 수 없습니다.");
+        } else if (c == '+') {
             this.result = " " + (num1 + num2);
         } else if (c == '-') {
             this.result = " " + (num1 - num2);
