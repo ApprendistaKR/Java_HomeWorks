@@ -22,10 +22,8 @@ public class main {
 
             String result = cal.calculator(num1, num2, c);
             System.out.println("결과:"+ result);
-            System.out.println("이전 결과:" + cal.getList());
 
-
-            System.out.println("계속 계산하시겠습니까?\n(그만 두시려면 exit를, 오래된 결과 값을 삭제 하실려면 delet를, 전체 결과 값을 삭제 하실려면 all을, 계속하시려면 아무키나 입력해주세요)");
+            System.out.println("계속 계산하시겠습니까?\n(그만 두시려면 exit, 이전 결과를 조회 하실려면 get,오래된 결과 값을 삭제 하실려면 delet, 이전 결과 값 전체를 삭제 하실려면 all, 계속하시려면 아무키나 입력해주세요)");
             str2 = sc.nextLine();
 
             if (str2.equals("all")){
@@ -34,6 +32,8 @@ public class main {
             } else if(str2.equals("delet")){
                 cal.removeResult();
                 System.out.println("가장 오래된 결과 값이 삭제 되었습니다.");
+            } else if(str2.equals("get")){
+                System.out.println("이전 결과:" + cal.getList());
             }
         }
     }
