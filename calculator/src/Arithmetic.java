@@ -1,4 +1,4 @@
-public enum OperatorType {
+public enum Arithmetic {
     PLUS("+"),
     MINUS("-"),
     MULTIPLY("*"),
@@ -6,7 +6,7 @@ public enum OperatorType {
 
     private final String arti;
 
-    OperatorType(String arti) {
+    Arithmetic(String arti) {
         this.arti = arti;
     }
 public int Cal(int num1, int num2){
