@@ -9,8 +9,9 @@ public enum Arithmetic {
     Arithmetic(String arti) {
         this.arti = arti;
     }
-public int Cal(int num1, int num2){
-        return switch (this){
+
+    public int Cal(int num1, int num2) {
+        return switch (this) {
             case PLUS -> num1 + num2;
             case MINUS -> num1 - num2;
             case MULTIPLY -> num1 * num2;
@@ -18,7 +19,7 @@ public int Cal(int num1, int num2){
         };
     }
 
-public String getArti(){
-    return arti;
+    public String getArti() {
+        return arti;
     }
 }
