@@ -30,5 +30,4 @@ public class Calculator {
     public void removeResult(){
         list.remove(0);
     }
-
 }
