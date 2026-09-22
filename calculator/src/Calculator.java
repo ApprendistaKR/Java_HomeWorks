@@ -3,31 +3,42 @@ import java.util.ArrayList;
 public class Calculator {
     private ArrayList<String> list = new ArrayList<String>();
     String result;
+    OperatorType oper = null;
 
-    String calculator(int num1, int num2, char c) {
-        if((num1 < 0) && (num2 < 0)) {
-            this.result = ("음의 정수는 입력할 수 없습니다.");
-        } else if (c == '+') {
-            this.result = " " + (num1 + num2);
-        } else if (c == '-') {
-            this.result = " " + (num1 - num2);
-        } else if (c == '*') {
-            this.result = "" + (num1 * num2);
-        } else if ((c == '/') && (num2 != 0)) {
-            this.result = " " + (num1 / num2);
-        } else {
-            this.result = ("나눗셈 연산에서 분모(두번째 숫자)에 0이 입력될 수 없습니다");
+    String calculator(int num1, int num2, String str) {
+        switch (str) {
+            case "+" -> oper = OperatorType.PLUS;
+            case "-" -> oper = OperatorType.MINUS;
+            case "*" -> oper = OperatorType.MULTIPLY;
+            case "/" -> oper = OperatorType.DIVIDE;
         }
+        result = String.valueOf(oper.Cal(num1, num2));
+//        if((num1 < 0) && (num2 < 0)) {
+//            this.result = ("음의 정수는 입력할 수 없습니다.");
+//        } else if (c == '+') {
+//            this.result = " " + (num1 + num2);
+//        } else if (c == '-') {
+//            this.result = " " + (num1 - num2);
+//        } else if (c == '*') {
+//            this.result = "" + (num1 * num2);
+//        } else if ((c == '/') && (num2 != 0)) {
+//            this.result = " " + (num1 / num2);
+//        } else {
+//            this.result = ("나눗셈 연산에서 분모(두번째 숫자)에 0이 입력될 수 없습니다");
+//        }
         list.add(result);
         return result;
     }
     public ArrayList<String> getList() {
+
         return list;
     }
     public void setList(ArrayList<String> list) {
+
         this.list = list;
     }
     public void removeResult(){
+
         list.remove(0);
     }
 }

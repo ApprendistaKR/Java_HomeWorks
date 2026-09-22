@@ -9,7 +9,7 @@ public enum OperatorType {
     OperatorType(String arti) {
         this.arti = arti;
     }
-public int cal(int num1, int num2){
+public int Cal(int num1, int num2){
         return switch (this){
             case PLUS -> num1 + num2;
             case MINUS -> num1 - num2;
@@ -18,4 +18,7 @@ public int cal(int num1, int num2){
         };
     }
 
+public String getArti(){
+    return arti;
+    }
 }
