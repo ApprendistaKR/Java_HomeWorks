@@ -6,6 +6,7 @@ public class main {
         Scanner sc = new Scanner(System.in);
         Calculator cal = new Calculator();
         String str2 = "";
+
         while (!str2.equals("exit")) {
 
             System.out.print("첫 번째 숫자를 입력해주세요.");
@@ -18,9 +19,8 @@ public class main {
 
             System.out.print("사칙연산 기호를 입력하세요.");
             String str = sc.nextLine();
-            char c = str.charAt(0);
 
-            String result = cal.calculator(num1, num2, c);
+            String result = cal.calculator(num1, num2, str);
             System.out.println("결과:"+ result);
 
             System.out.println("계속 계산하시겠습니까?\n(그만 두시려면 exit, 이전 결과를 조회 하실려면 get,오래된 결과 값을 삭제 하실려면 delet, 이전 결과 값 전체를 삭제 하실려면 all, 계속하시려면 아무키나 입력해주세요)");
