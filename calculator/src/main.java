@@ -5,8 +5,8 @@ public class main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Calculator cal = new Calculator();
-//        OperatorType oper = null;
         String str2 = "";
+
         while (!str2.equals("exit")) {
 
             System.out.print("첫 번째 숫자를 입력해주세요.");
@@ -19,19 +19,6 @@ public class main {
 
             System.out.print("사칙연산 기호를 입력하세요.");
             String str = sc.nextLine();
-
-//            char c = str.charAt(0);
-
-
-//            switch (str) {
-//                case "+" -> oper = OperatorType.PLUS;
-//                case "-" -> oper = OperatorType.MINUS;
-//                case "*" -> oper = OperatorType.MULTIPLY;
-//                case "/" -> oper = OperatorType.DIVIDE;
-//            }
-//
-//            int result = oper.Cal(num1, num2);
-//            System.out.println("결과:" + result);
 
             String result = cal.calculator(num1, num2, str);
             System.out.println("결과:"+ result);
