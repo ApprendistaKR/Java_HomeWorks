@@ -22,5 +22,13 @@ public class Product {
     }
 
     //기능
+    public void showProduct() {
+        System.out.println(name + " | " + price + "원" + " | " + explanation);
+
+    }
+
+    public String getShowProduct() {
+        return (name + " | " + price + "원" + " | " + explanation);
+    }
 
 }
