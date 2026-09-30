@@ -20,7 +20,6 @@ public class Main {
 
         CommerceSystem commerceSystem = new CommerceSystem(products);
 
-
         commerceSystem.start();
 
     }

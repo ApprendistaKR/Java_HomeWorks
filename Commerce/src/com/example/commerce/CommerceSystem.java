@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class CommerceSystem {
     //속성
     private List<Product> products;
-    private int i;
     private Scanner sc = new Scanner(System.in);
 
     //생성자
@@ -17,13 +16,6 @@ public class CommerceSystem {
         this.products = products;
     }
 
-    public CommerceSystem(int i) {
-        this.i = i;
-    }
-
-    public CommerceSystem(Scanner sc) {
-        this.sc = sc;
-    }
 
     //기능
     public void start() {
