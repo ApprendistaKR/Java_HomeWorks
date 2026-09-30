@@ -2,7 +2,6 @@ package com.example.commerce;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,23 +17,10 @@ public class Main {
         products.add(productC);
         products.add(productD);
 
-        Scanner sc = new Scanner(System.in);
 
-        System.out.println("제품 = " + products);
+        CommerceSystem commerceSystem = new CommerceSystem(products);
 
-        System.out.println("실시간 커머스 플랫폼 - 전자제품");
+        commerceSystem.start();
 
-
-        for (int i = 0; i < products.size(); i++) {
-            int prdouctNumber = i + 1;
-            Product foundProduct = products.get(i);
-            String foundProductinfo = foundProduct.getShowProduct();
-            System.out.println(prdouctNumber + ". " + foundProductinfo);
-        }
-        System.out.println("0. 종료");
-        int str = sc.nextInt();
-        if (str == 0) {
-            System.out.println("커머스 플랫폼을 종료합니다.");
-        }
     }
 }
