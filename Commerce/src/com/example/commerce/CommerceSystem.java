@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class CommerceSystem {
     //속성
     private List<Product> products;
-    private Scanner sc = new Scanner(System.in);
 
     //생성자
     //1. 클래스와 이름이 같다.
@@ -27,12 +26,13 @@ public class CommerceSystem {
             System.out.println(prdouctNumber + ". " + foundProductinfo);
         }
         System.out.println("0. 종료");
+
+        Scanner sc = new Scanner(System.in);
+
         int str = sc.nextInt();
         if (str == 0) {
             System.out.println("커머스 플랫폼을 종료합니다.");
         }
-
     }
-
 }
 
