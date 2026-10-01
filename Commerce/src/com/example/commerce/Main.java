@@ -18,9 +18,10 @@ public class Main {
         products.add(productD);
 
 
-        CommerceSystem commerceSystem = new CommerceSystem(products);
+        CommerceSystem commerceSystemA = new CommerceSystem();
+        commerceSystemA.pickupList(products);
 
-        commerceSystem.start();
+        commerceSystemA.start();
 
     }
 }
