@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        //속성
         Product productA = new Product("Galaxy S24", 1200000,"최신 안드로이드 스마트폰", 50);
         Product productB = new Product("iPhone 16", 1350000,"Apple의 최신 스마트폰", 50);
         Product productC = new Product("MacBook Pro", 2400000, "M3 칩셋이 탑재된 노트북", 20);
@@ -18,8 +17,7 @@ public class Main {
         products.add(productD);
 
 
-        CommerceSystem commerceSystemA = new CommerceSystem();
-        commerceSystemA.addList(products);
+        CommerceSystem commerceSystemA = new CommerceSystem(products);
 
         commerceSystemA.start();
 

@@ -14,7 +14,7 @@ public class Product {
     //1. 클래스와 이름이 같다.
     //2. 반환 데이터 타입이 없다.
     //3. 여러개가 존재할 수 있다.
-    public Product(String name,int price, String explanation, int stock) {
+    public Product(String name, int price, String explanation, int stock) {
         this.name = name;
         this.price = price;
         this.explanation = explanation;

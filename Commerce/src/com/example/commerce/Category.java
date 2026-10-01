@@ -2,9 +2,9 @@ package com.example.commerce;
 
 public class Category {
     //속성
-    private String electronics;
-    private String food;
-    private String cloth;
+    private Product electronics;
+    private Product food;
+    private Product cloth;
 
     //생성자
     //1. 클래스와 이름이 같다.
