@@ -14,7 +14,7 @@ public class CommerceSystem {
 
 
     //기능
-    public void pickupList(List list) {
+    public void addList(List list) {
         this.list = list;
     }
 

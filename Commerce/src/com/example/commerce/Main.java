@@ -19,7 +19,7 @@ public class Main {
 
 
         CommerceSystem commerceSystemA = new CommerceSystem();
-        commerceSystemA.pickupList(products);
+        commerceSystemA.addList(products);
 
         commerceSystemA.start();
 
