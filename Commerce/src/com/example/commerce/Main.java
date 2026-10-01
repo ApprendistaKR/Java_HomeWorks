@@ -16,8 +16,35 @@ public class Main {
         products.add(productC);
         products.add(productD);
 
+        Product productE = new Product("사과", 2000, "청송사과", 300);
+        Product productF = new Product("배", 3000, "나주 배", 51);
+        Product productG = new Product("등심 1kg",200000, "한우", 20);
+        Product productH = new Product("삼겹살 200g", 5000, "스페인산", 30);
 
-        CommerceSystem commerceSystemA = new CommerceSystem(products);
+
+        List<Product> food = new ArrayList<>();
+        food.add(productE);
+        food.add(productF);
+        food.add(productG);
+        food.add(productH);
+
+
+
+        Category categoryEle = new Category("전자 제품", products);
+        Category categoryFood = new Category("식품", food);
+
+        List<Category> categoryList = new ArrayList<>();
+        categoryList.add(categoryEle);
+        categoryList.add(categoryFood);
+
+
+
+//        List<List<Product>> list = new ArrayList<>();
+//        list.add(products);
+
+
+
+        CommerceSystem commerceSystemA = new CommerceSystem(products,categoryList);
 
         commerceSystemA.start();
 
