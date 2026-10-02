@@ -21,27 +21,27 @@ public class Main {
         Product foodC = new Product("등심 1kg",200000, "한우", 20);
         Product foodD = new Product("삼겹살 200g", 5000, "스페인산", 30);
 
-        List<Product> food = new ArrayList<>();
-        food.add(foodA);
-        food.add(foodB);
-        food.add(foodC);
-        food.add(foodD);
+        List<Product> foodList = new ArrayList<>();
+        foodList.add(foodA);
+        foodList.add(foodB);
+        foodList.add(foodC);
+        foodList.add(foodD);
 
         Product clothA = new Product("검은 반팔 티", 5000, "검은색 단색 티셔츠", 612);
         Product clothB = new Product("찢어진 청바지", 15000, "무릎 부분이 찢어진 청바지", 112);
         Product clothC = new Product("검정 카디건", 10000, "기모 재질의 카디건", 225);
         Product clothD = new Product("MA-1 자켓", 150000, "검정색 항공 자켓", 117);
 
-        List<Product> cloth = new ArrayList<>();
-        cloth.add(clothA);
-        cloth.add(clothB);
-        cloth.add(clothC);
-        cloth.add(clothD);
+        List<Product> clothingList = new ArrayList<>();
+        clothingList.add(clothA);
+        clothingList.add(clothB);
+        clothingList.add(clothC);
+        clothingList.add(clothD);
 
 
         Category categoryEle = new Category("전자 제품", products);
-        Category categoryFood = new Category("식품", food);
-        Category categoryCloth = new Category("의류", cloth);
+        Category categoryFood = new Category("식품", foodList);
+        Category categoryCloth = new Category("의류", clothingList);
 
         List<Category> categoryList = new ArrayList<>();
         categoryList.add(categoryEle);
@@ -49,14 +49,7 @@ public class Main {
         categoryList.add(categoryCloth);
 
 
-
-
-
-
-
-
         CommerceSystem commerceSystemA = new CommerceSystem(categoryList);
-
         commerceSystemA.start();
 
     }

@@ -17,10 +17,6 @@ public class Category {
     }
 
     //기능
-    public String listName() {
-        return (name);
-    }
-
     public String getName() {
         return name;
     }

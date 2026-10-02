@@ -16,7 +16,6 @@ public class CommerceSystem {
         this.categoryList = categoryList;
     }
 
-
     //기능
 
     public void start() {
@@ -50,9 +49,10 @@ public class CommerceSystem {
                     System.out.println("0. 뒤로가기");
                     num2 = input.nextInt();
                     if (num2 > 0 && num2 <= product.size()) {
-                        Product selectProduct = product.get(num2 - 1);
-                        System.out.println("선택한 상품: " + selectProduct.getShowProduct());
+                        Product foundProduct = product.get(num2 - 1);
+                        System.out.println("선택한 상품: " + foundProduct.getShowProduct());
                         return;
+
                     } else if (num2 == 0) {
                         System.out.println("뒤로 돌아갑니다.");
                     }
