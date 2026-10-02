@@ -20,4 +20,12 @@ public class Category {
     public String listName() {
         return (name);
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Product> getProducts() {
+        return list;
+    }
 }

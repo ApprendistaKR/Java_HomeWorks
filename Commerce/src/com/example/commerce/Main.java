@@ -16,35 +16,46 @@ public class Main {
         products.add(productC);
         products.add(productD);
 
-        Product productE = new Product("사과", 2000, "청송사과", 300);
-        Product productF = new Product("배", 3000, "나주 배", 51);
-        Product productG = new Product("등심 1kg",200000, "한우", 20);
-        Product productH = new Product("삼겹살 200g", 5000, "스페인산", 30);
-
+        Product foodA = new Product("사과", 2000, "청송사과", 300);
+        Product foodB = new Product("배", 3000, "나주 배", 51);
+        Product foodC = new Product("등심 1kg",200000, "한우", 20);
+        Product foodD = new Product("삼겹살 200g", 5000, "스페인산", 30);
 
         List<Product> food = new ArrayList<>();
-        food.add(productE);
-        food.add(productF);
-        food.add(productG);
-        food.add(productH);
+        food.add(foodA);
+        food.add(foodB);
+        food.add(foodC);
+        food.add(foodD);
 
+        Product clothA = new Product("검은 반팔 티", 5000, "검은색 단색 티셔츠", 612);
+        Product clothB = new Product("찢어진 청바지", 15000, "무릎 부분이 찢어진 청바지", 112);
+        Product clothC = new Product("검정 카디건", 10000, "기모 재질의 카디건", 225);
+        Product clothD = new Product("MA-1 자켓", 150000, "검정색 항공 자켓", 117);
+
+        List<Product> cloth = new ArrayList<>();
+        cloth.add(clothA);
+        cloth.add(clothB);
+        cloth.add(clothC);
+        cloth.add(clothD);
 
 
         Category categoryEle = new Category("전자 제품", products);
         Category categoryFood = new Category("식품", food);
+        Category categoryCloth = new Category("의류", cloth);
 
         List<Category> categoryList = new ArrayList<>();
         categoryList.add(categoryEle);
         categoryList.add(categoryFood);
+        categoryList.add(categoryCloth);
 
 
 
-//        List<List<Product>> list = new ArrayList<>();
-//        list.add(products);
 
 
 
-        CommerceSystem commerceSystemA = new CommerceSystem(products,categoryList);
+
+
+        CommerceSystem commerceSystemA = new CommerceSystem(categoryList);
 
         commerceSystemA.start();
 
