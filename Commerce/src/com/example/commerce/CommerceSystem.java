@@ -8,6 +8,9 @@ public class CommerceSystem {
     private List<Category> categoryList;
     private Scanner input = new Scanner(System.in);
 
+    private Category selectedCategory;
+    private int command;
+
     //생성자
     //1. 클래스와 이름이 같다.
     //2. 반환 데이터 타입이 없다.
@@ -19,10 +22,8 @@ public class CommerceSystem {
     //기능
 
     public void start() {
-        int num = 0;
-        int num2 = 0;
-        do {
-            System.out.println("[실시간 커머스 플랫폼 메인]");
+        while (true) {
+            // 1. 카테고리 목록 출력
             for (int i = 0; i < categoryList.size(); i++) {
                 int categoryNumber = i + 1;
                 Category foundCategory = categoryList.get(i);
@@ -30,37 +31,45 @@ public class CommerceSystem {
                 System.out.println(categoryNumber + ". " + foundCategoryInfo);
             }
             System.out.println("0. 종료");
-            num = input.nextInt();
-            if (num == 0) {
+
+            // 2. 입력값 받기
+            this.command = input.nextInt();
+
+            // 3. 카테고리 찾기
+            if (command == 0) {
                 System.out.println("커머스 플랫폼을 종료합니다.");
-            } else if (num > 0 && num <= categoryList.size()) {
-                Category selectedCategory = categoryList.get(num - 1);
-                do {
-
-                    System.out.println("[" + selectedCategory.getName() + " 카테고리]");
-                    List<Product> product = selectedCategory.getProducts();
-
-                    for (int i = 0; i < product.size(); i++) {
-                        int productsNumber = i + 1;
-                        Product foundProduct = product.get(i);
-                        String foundProductInfo = foundProduct.getShowProduct();
-                        System.out.println(productsNumber + ". " + foundProductInfo);
-                    }
-                    System.out.println("0. 뒤로가기");
-                    num2 = input.nextInt();
-                    if (num2 > 0 && num2 <= product.size()) {
-                        Product foundProduct = product.get(num2 - 1);
-                        System.out.println("선택한 상품: " + foundProduct.getShowProduct());
-                        return;
-
-                    } else if (num2 == 0) {
-                        System.out.println("뒤로 돌아갑니다.");
-                    }
-                } while (num2 != 0);
+                break;
+            } else if (0 < command && command <= categoryList.size()) {
+                this.selectedCategory = categoryList.get(command - 1);
+                String selectedCategoryName = selectedCategory.getName();
+                System.out.println(selectedCategoryName + "카테고리");
+            } else {
+                System.out.println("잘못된 입력입니다.");
+                continue;
             }
 
-        } while (num != 0);
+            // 4. 상품 목록 출력
+            List<Product> product = this.selectedCategory.getProducts();
+            for (int i = 0; i < product.size(); i++) {
+                int productsNumber = i + 1;
+                Product foundProduct = product.get(i);
+                String foundProductInfo = foundProduct.getShowProduct();
+                System.out.println(productsNumber + ". " + foundProductInfo);
+            }
+            System.out.println("0. 뒤로가기");
+
+            // 5. 입력값 받기
+            this.command = input.nextInt();
+
+            // 6. 상품 찾기
+            if (0 < command && command <= product.size()) {
+                Product selectedProduct = product.get(command - 1);
+                String selectedProductInfo = selectedProduct.getShowProduct();
+                System.out.println("선택한 상품: " + selectedProductInfo);
+                break;
+            } else if (command == 0) {
+                System.out.println("뒤로 돌아갑니다.");
+            }
+        }
     }
 }
-
-
