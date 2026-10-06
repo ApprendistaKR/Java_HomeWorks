@@ -21,7 +21,15 @@ public class Category {
         return this.name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public List<Product> getProducts() {
         return this.list;
+    }
+
+    public void setProducts(List<Product> list) {
+        this.list = list;
     }
 }
