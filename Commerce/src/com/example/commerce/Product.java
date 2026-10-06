@@ -28,7 +28,7 @@ public class Product {
     }
 
     public String getShowProduct() {
-        return (name + " | " + price + "원" + " | " + explanation);
+        return (name + " | " + price + "원" + " | " + explanation + " | " + stock);
     }
 
 }

@@ -18,10 +18,10 @@ public class Category {
 
     //기능
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public List<Product> getProducts() {
-        return list;
+        return this.list;
     }
 }
