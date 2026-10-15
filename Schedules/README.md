@@ -1,4 +1,4 @@
-API 명세서
+## API 명세서
 1. 일정 생성
 - Request
   - Method: POST
@@ -15,7 +15,7 @@ API 명세서
  - Status : Created
  - Body: json
   ```
-  "Id": "ID값"
+  "id": "일정의 고유 id값"
   "title": "일정 제목"
   "content": "일정 내용"
   "username": "작성자명"
@@ -37,7 +37,7 @@ API 명세서
   - Status : OK
   - Body: json
   ```
-  "Id": "ID값"
+  "Id": "일정의 고유 id값"
   "title": "일정 제목"
   "content": "일정 내용"
   "username": "작성자명"
@@ -46,7 +46,9 @@ API 명세서
 3. 일정 수정
 - Request
   - Method: Patch
-  - URL: /schedules
+  - URL: /schedules/{id}
+  - Path Parameters:
+    - id: 수정할 일정의 고유 ID
   - Content-Type: application/json
   - Body: json
   ```
@@ -61,10 +63,11 @@ API 명세서
   "title": "일정 제목"
   "username": "작성자명"
   "password": "비밀번호"
+  "date": "수정 날짜"
   ```
 4. 일정 삭제
 - Request
-  - Method: Patch
+  - Method: Delete
   - URL: /schedules/{id}
   - Path Parameters: 
     - id: 삭제할 일정의 고유 ID 
@@ -78,3 +81,14 @@ API 명세서
 - Response
   - Status : Delete
 ---
+## ERD
+- 일정
+
+| NAME     | TYPE         |
+|:---------|:-------------|
+| id 🔑    | BIGINT       |
+| title    | VARCHAR(50)  |
+| content  | VARCHAR(100) |
+| username | VARCHAR(20)  |
+| password | VARCHAR(15)  |
+| date     | DATETIME     |
