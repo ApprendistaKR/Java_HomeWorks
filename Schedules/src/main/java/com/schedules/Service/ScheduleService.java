@@ -36,7 +36,8 @@ public class ScheduleService {
                 savedSchedule.getTitle(),
                 savedSchedule.getContent(),
                 savedSchedule.getUsername(),
-                savedSchedule.getCraeteTime()
+                savedSchedule.getCraeteTime(),
+                savedSchedule.getModifyTime()
         );
     }
 //    일정 전체 조회
