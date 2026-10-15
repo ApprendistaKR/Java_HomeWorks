@@ -2,15 +2,16 @@ package com.schedules.Dto;
 
 import lombok.Getter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
 public class CreateScheduleResponseDto {
-    private Long id;
-    private String title;
-    private String content;
-    private String username;
-    private LocalDateTime date;
+    private final Long id;
+    private final String title;
+    private final String content;
+    private final String username;
+    private final LocalDateTime date;
 
     public CreateScheduleResponseDto(
             Long id,
