@@ -1,18 +1,21 @@
-package com.schedules.Dto;
+package com.schedules.Dto.Response;
 
 import lombok.Getter;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 
 @Getter
-public class GetOneScheduleResPonseDto {
+public class GetScheduleResponsetDto {
+
+    //속성
     private final Long id;
     private final String title;
     private final String content;
     private final String username;
-    private final LocalDate date;
+    private final LocalDateTime date;
 
-    public GetOneScheduleResPonseDto(Long id, String title, String content, String username, LocalDate date) {
+    public GetScheduleResponsetDto(Long id, String title, String content, String username, LocalDateTime date) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -20,4 +23,3 @@ public class GetOneScheduleResPonseDto {
         this.date = date;
     }
 }
-

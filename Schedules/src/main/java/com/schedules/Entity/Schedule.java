@@ -20,14 +20,17 @@ public class Schedule {
     //속성
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
+
     @Column(length = 50, nullable = false)
     private String title;
+
     @Column(length = 100, nullable = false)
     private String content;
+
     @Column(length = 10, nullable = false)
     private String username;
+
     @Column(length = 15, nullable = false)
     private String password;
 
@@ -36,6 +39,7 @@ public class Schedule {
     private LocalDateTime CraeteTime;
 
     @LastModifiedDate
+    @Column(updatable = false)
     private LocalDateTime ModifyTime;
 
 

@@ -1,6 +1,11 @@
 package com.schedules.Service;
 
-import com.schedules.Dto.*;
+import com.schedules.Dto.Request.CreateScheduleRequestDto;
+import com.schedules.Dto.Request.PatchScheduleRequestDto;
+import com.schedules.Dto.Response.CreateScheduleResponseDto;
+import com.schedules.Dto.Response.GetScheduleOneResponseDto;
+import com.schedules.Dto.Response.GetScheduleResponsetDto;
+import com.schedules.Dto.Response.PatchScheduleResponseDto;
 import com.schedules.Entity.Schedule;
 import com.schedules.Repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
@@ -54,16 +59,16 @@ public class ScheduleService {
     }
 //    일정 단건 조회
     @Transactional(readOnly = true)
-    public GetScheduleResponsetDto getOne(Long schdulesid) {
+    public GetScheduleOneResponseDto getOne(Long schdulesid) {
         Schedule schedule = scheduleRepository.findById(schdulesid).orElseThrow(
                 () -> new IllegalStateException("존재하지 않는 일정입니다.")
         );
-        return new GetScheduleResponsetDto(
+        return new GetScheduleOneResponseDto(
                 schedule.getId(),
                 schedule.getTitle(),
                 schedule.getContent(),
                 schedule.getUsername(),
-                schedule.getCraeteTime()
+                schedule.getCraeteTime().toLocalDate()
         );
     }
 

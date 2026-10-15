@@ -1,8 +1,7 @@
-package com.schedules.Dto;
+package com.schedules.Dto.Response;
 
 import lombok.Getter;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
