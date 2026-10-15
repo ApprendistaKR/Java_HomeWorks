@@ -65,7 +65,9 @@ API 명세서
 4. 일정 삭제
 - Request
   - Method: Patch
-  - URL: /schedules
+  - URL: /schedules/{id}
+  - Path Parameters: 
+    - id: 삭제할 일정의 고유 ID 
   - Content-Type: application/json
   - Body: json
   ```
