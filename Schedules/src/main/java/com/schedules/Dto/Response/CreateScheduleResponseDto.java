@@ -10,19 +10,21 @@ public class CreateScheduleResponseDto {
     private final String title;
     private final String content;
     private final String username;
-    private final LocalDateTime date;
+    private final LocalDateTime createTime;
+    private final LocalDateTime modifiedTime;
 
     public CreateScheduleResponseDto(
             Long id,
             String title,
             String content,
             String username,
-            LocalDateTime date) {
+            LocalDateTime createTime, LocalDateTime modifiedTime) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.username = username;
-        this.date = date;
+        this.createTime = createTime;
+        this.modifiedTime = modifiedTime;
 
 
     }
