@@ -12,15 +12,15 @@
   "password": "비밀번호"
 
 - Response
- - Status : Created
- - Body: json
+  - Status: Created
+  - Body: json
   ```
   "id": "일정의 고유 id값"
   "title": "일정 제목"
   "content": "일정 내용"
   "username": "작성자명"
   "date": "생성 날짜"
-```
+  ```
 2. 일정 조회
 - Request
   - Method: Get
@@ -34,7 +34,7 @@
   "password": "비밀번호"
 
 - Response
-  - Status : OK
+  - Status: OK
   - Body: json
   ```
   "Id": "일정의 고유 id값"
@@ -56,7 +56,7 @@
   "username": "작성자명"
 
 - Response
-  - Status : OK
+  - Status: OK
   - Body: json
   ```
   "Id": "ID값"
@@ -79,7 +79,7 @@
   "password": "비밀번호"
 
 - Response
-  - Status : Delete
+  - Status: Delete
 ---
 ## ERD
 - 일정
