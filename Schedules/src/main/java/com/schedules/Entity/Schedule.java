@@ -36,7 +36,7 @@ public class Schedule {
     private LocalDateTime CraeteTime;
 
     @LastModifiedDate
-    private LocalDateTime modifyTime;
+    private LocalDateTime ModifyTime;
 
 
 
