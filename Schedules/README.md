@@ -71,6 +71,8 @@ API 명세서
   ```
   "title": "일정 제목"
   "username": "작성자명"
+  "password": "비밀번호"
 
 - Response
   - Status : Delete
+---
