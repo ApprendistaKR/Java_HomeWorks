@@ -1,4 +1,4 @@
-API 명세서
+## API 명세서
 1. 일정 생성
 - Request
   - Method: POST
@@ -81,3 +81,14 @@ API 명세서
 - Response
   - Status : Delete
 ---
+## ERD
+- 일정
+
+| NAME     | TYPE         |
+|:---------|:-------------|
+| id 🔑    | BIGINT       |
+| title    | VARCHAR(50)  |
+| content  | VARCHAR(100) |
+| username | VARCHAR(20)  |
+| password | VARCHAR(15)  |
+| date     | DATETIME     |
