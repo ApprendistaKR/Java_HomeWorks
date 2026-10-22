@@ -1,4 +1,4 @@
-package com.schedules_2.schedule.Controller;
+package com.schedules_2.schedule;
 
 import com.schedules_2.schedule.Dto.RequestDto.SchduleUpdateRequestDto;
 import com.schedules_2.schedule.Dto.RequestDto.ScheduleCreateRequestDto;
@@ -6,7 +6,6 @@ import com.schedules_2.schedule.Dto.ResponseDto.SchduleCreateResponseDto;
 import com.schedules_2.schedule.Dto.ResponseDto.ScheduleGetAllResponseDto;
 import com.schedules_2.schedule.Dto.ResponseDto.ScheduleGetOneResponseDto;
 import com.schedules_2.schedule.Dto.ResponseDto.ScheduleUpdatResponseDto;
-import com.schedules_2.schedule.Service.ScheduleService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
