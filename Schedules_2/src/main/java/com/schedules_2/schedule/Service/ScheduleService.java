@@ -84,4 +84,13 @@ public class ScheduleService {
                 schedule.getModifiedAt()
         );
     }
+
+    //일정 삭제
+    @Transactional
+    public void delete(Long scheduleId) {
+        Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow(
+                () -> new IllegalStateException("존재하지 않는 일정입니다.")
+        );
+        scheduleRepository.deleteById(scheduleId);
+    }
 }
