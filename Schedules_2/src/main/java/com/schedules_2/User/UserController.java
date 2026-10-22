@@ -53,6 +53,13 @@ public class UserController {
     ) {
         return ResponseEntity.status(HttpStatus.OK).body(userService.update(userId, request));
     }
+    //유저 삭제
+    @DeleteMapping("/{userId}")
+    public void delete(
+            @PathVariable Long userId
+    ) {
+        userService.delete(userId);
+    }
 }
 
 
