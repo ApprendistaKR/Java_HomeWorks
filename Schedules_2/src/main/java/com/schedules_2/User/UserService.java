@@ -7,9 +7,11 @@ import com.schedules_2.User.Dto.ResponseDto.UserGetAllResponseDto;
 import com.schedules_2.User.Dto.ResponseDto.UserGetOneResponseDto;
 import com.schedules_2.User.Dto.ResponseDto.UserUpdateResponseDto;
 import com.schedules_2.User.Entity.User;
+import com.schedules_2.schedule.Entity.Schedule;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.List;
 import java.util.Locale;
@@ -82,4 +84,14 @@ public class UserService {
                 user.getModifiedAt()
         );
     }
+
+    //일정 삭제
+    @Transactional
+    public void delete(Long userId) {
+        User user = userRepository.findById(userId).orElseThrow(
+                () -> new IllegalStateException("존재하지 않는 일정입니다.")
+        );
+        userRepository.deleteById(userId);
+    }
+
 }
