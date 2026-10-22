@@ -2,13 +2,17 @@ package com.schedules_2.schedule.Controller;
 
 import com.schedules_2.schedule.Dto.RequestDto.ScheduleCreateRequestDto;
 import com.schedules_2.schedule.Dto.ResponseDto.SchduleCreateResponseDto;
+import com.schedules_2.schedule.Dto.ResponseDto.ScheduleGetAllResponseDto;
+import com.schedules_2.schedule.Dto.ResponseDto.ScheduleGetOneResponseDto;
 import com.schedules_2.schedule.Service.ScheduleService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/schedules")
+@RequestMapping
 public class ScheduleController {
     //속성
     private final ScheduleService service;
@@ -23,12 +27,21 @@ public class ScheduleController {
     }
 
     //기능
-    @PostMapping
-    public ResponseEntity<SchduleCreateResponseDto> createScheduleAPI(@RequestBody ScheduleCreateRequestDto scheduleCreateRequestDto) {
+    @PostMapping("/schedules")
+    public ResponseEntity<SchduleCreateResponseDto> create(@RequestBody ScheduleCreateRequestDto scheduleCreateRequestDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.createSchedule(scheduleCreateRequestDto));
     }
-    @GetMapping
-    public ResponseEntity<ScheduleGetAllResponseDto> getScheduleAPI() {
-
+    @GetMapping("/schedules")
+    public ResponseEntity<List<ScheduleGetAllResponseDto>> getAll() {
+        return ResponseEntity.status(HttpStatus.OK).body(service.findAll());
     }
+
+    @GetMapping("/schedule/{scheduleId}")
+    public ResponseEntity<ScheduleGetOneResponseDto> getOne(
+            @PathVariable Long scheduleId
+    ) {
+        return ResponseEntity.status(HttpStatus.OK).body(service.findOne(scheduleId));
+    }
+
+
 }

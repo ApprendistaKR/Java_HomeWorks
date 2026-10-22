@@ -2,6 +2,8 @@ package com.schedules_2.schedule.Service;
 
 import com.schedules_2.schedule.Dto.RequestDto.ScheduleCreateRequestDto;
 import com.schedules_2.schedule.Dto.ResponseDto.SchduleCreateResponseDto;
+import com.schedules_2.schedule.Dto.ResponseDto.ScheduleGetAllResponseDto;
+import com.schedules_2.schedule.Dto.ResponseDto.ScheduleGetOneResponseDto;
 import com.schedules_2.schedule.Entity.Schedule;
 import com.schedules_2.schedule.Repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
@@ -30,13 +32,35 @@ public class ScheduleService {
         return savedScheduleResponse;
     }
 
-    //조회 기능
-    @Transactional
-    public void getSchedule() {
+    //전체 조회 기능
+    @Transactional(readOnly = true)
+    public List<ScheduleGetAllResponseDto> findAll() {
+        List<Schedule> schedules = scheduleRepository.findAll();
+        return schedules.stream().map(schedule -> new ScheduleGetAllResponseDto(
+                schedule.getId(),
+                schedule.getName(),
+                schedule.getTitle(),
+                schedule.getContent(),
+                schedule.getCreateAt(),
+                schedule.getModifiedAt()
+        )).toList();
+    }
 
-        // 레포지토리 준비
-        List<Schedule> listSchedule = this.scheduleRepository.findAll();
 
+    //단일 조회 기능
+    @Transactional(readOnly = true)
+    public ScheduleGetOneResponseDto findOne(Long scheduleId) {
+        Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow(
+                () -> new IllegalStateException("존재하지 않는 일정입니다.")
+        );
+        return new ScheduleGetOneResponseDto(
+                schedule.getId(),
+                schedule.getName(),
+                schedule.getTitle(),
+                schedule.getContent(),
+                schedule.getCreateAt(),
+                schedule.getModifiedAt()
+        );
     }
 
 }

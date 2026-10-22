@@ -17,11 +17,11 @@ public class BassEntity {
     @CreatedDate
     @Column(updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime createDate;
+    private LocalDateTime createAt;
 
     @LastModifiedDate
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime modifiedDate;
+    private LocalDateTime modifiedAt;
 
 
 
