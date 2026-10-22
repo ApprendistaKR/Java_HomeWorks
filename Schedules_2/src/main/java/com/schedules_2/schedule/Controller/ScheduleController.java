@@ -5,10 +5,7 @@ import com.schedules_2.schedule.Dto.ResponseDto.SchduleCreateResponseDto;
 import com.schedules_2.schedule.Service.ScheduleService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/schedules")
@@ -27,13 +24,11 @@ public class ScheduleController {
 
     //기능
     @PostMapping
-    public ResponseEntity<SchduleCreateResponseDto> createMemberAPI(@RequestBody ScheduleCreateRequestDto scheduleCreateRequestDto) {
-        // 1. 서비스 처리 -
-        SchduleCreateResponseDto responseDto = this.service.createSchedule(scheduleCreateRequestDto);
-        ResponseEntity<SchduleCreateResponseDto> response = new ResponseEntity<>(responseDto, HttpStatus.CREATED);
-
-        //3. 반환
-        return response;
+    public ResponseEntity<SchduleCreateResponseDto> createScheduleAPI(@RequestBody ScheduleCreateRequestDto scheduleCreateRequestDto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.createSchedule(scheduleCreateRequestDto));
+    }
+    @GetMapping
+    public ResponseEntity<ScheduleGetAllResponseDto> getScheduleAPI() {
 
     }
 }

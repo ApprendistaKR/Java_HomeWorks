@@ -1,5 +1,10 @@
 package com.schedules_2.schedule.Dto.RequestDto;
 
+
+import lombok.Getter;
+
+
+@Getter
 public class ScheduleCreateRequestDto {
     //속성
     private String name;
@@ -14,14 +19,5 @@ public class ScheduleCreateRequestDto {
     }
 
     //기능
-    public String getName() {
-        return this.name;
-    }
-    public String getTitle() {
-        return this.title;
-    }
-    public String getContent() {
-        return this.content;
-    }
 
 }

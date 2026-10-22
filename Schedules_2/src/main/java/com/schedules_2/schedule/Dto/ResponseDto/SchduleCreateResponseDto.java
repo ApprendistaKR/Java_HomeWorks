@@ -1,8 +1,11 @@
 package com.schedules_2.schedule.Dto.ResponseDto;
 
+import lombok.Getter;
+
+@Getter
 public class SchduleCreateResponseDto {
     //속성
-    private Long id;
+    private final Long id;
 
     //생성자
     public SchduleCreateResponseDto(Long id) {
@@ -10,7 +13,4 @@ public class SchduleCreateResponseDto {
     }
 
     //기능
-    public Long getId() {
-        return this.id;
-    }
 }
