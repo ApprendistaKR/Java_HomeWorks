@@ -40,6 +40,13 @@ public class Schedule extends BassEntity {
 
     }
 
+    public void updateTitleAndAuthor(String name, String title, String content) {
+        this.name = name;
+        this.title = title;
+        this.content = content;
+
+    }
+
     //기능
 
 }

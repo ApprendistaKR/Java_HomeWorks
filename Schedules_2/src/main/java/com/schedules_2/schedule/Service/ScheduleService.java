@@ -1,9 +1,11 @@
 package com.schedules_2.schedule.Service;
 
+import com.schedules_2.schedule.Dto.RequestDto.SchduleUpdateRequestDto;
 import com.schedules_2.schedule.Dto.RequestDto.ScheduleCreateRequestDto;
 import com.schedules_2.schedule.Dto.ResponseDto.SchduleCreateResponseDto;
 import com.schedules_2.schedule.Dto.ResponseDto.ScheduleGetAllResponseDto;
 import com.schedules_2.schedule.Dto.ResponseDto.ScheduleGetOneResponseDto;
+import com.schedules_2.schedule.Dto.ResponseDto.ScheduleUpdatResponseDto;
 import com.schedules_2.schedule.Entity.Schedule;
 import com.schedules_2.schedule.Repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
@@ -62,5 +64,24 @@ public class ScheduleService {
                 schedule.getModifiedAt()
         );
     }
-
+    //일정 수정
+    @Transactional
+    public ScheduleUpdatResponseDto update(Long scheduleId, SchduleUpdateRequestDto request) {
+        Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow(
+                () -> new IllegalStateException("존재하지 않는 일정입니다.")
+        );
+        schedule.updateTitleAndAuthor(
+                request.getName(),
+                request.getTitle(),
+                request.getContent()
+        );
+        return new ScheduleUpdatResponseDto(
+                schedule.getId(),
+                schedule.getName(),
+                schedule.getTitle(),
+                schedule.getContent(),
+                schedule.getCreateAt(),
+                schedule.getModifiedAt()
+        );
+    }
 }
