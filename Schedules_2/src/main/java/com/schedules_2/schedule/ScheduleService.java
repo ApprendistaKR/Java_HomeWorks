@@ -1,4 +1,4 @@
-package com.schedules_2.schedule.Service;
+package com.schedules_2.schedule;
 
 import com.schedules_2.schedule.Dto.RequestDto.SchduleUpdateRequestDto;
 import com.schedules_2.schedule.Dto.RequestDto.ScheduleCreateRequestDto;
@@ -7,7 +7,6 @@ import com.schedules_2.schedule.Dto.ResponseDto.ScheduleGetAllResponseDto;
 import com.schedules_2.schedule.Dto.ResponseDto.ScheduleGetOneResponseDto;
 import com.schedules_2.schedule.Dto.ResponseDto.ScheduleUpdatResponseDto;
 import com.schedules_2.schedule.Entity.Schedule;
-import com.schedules_2.schedule.Repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 
