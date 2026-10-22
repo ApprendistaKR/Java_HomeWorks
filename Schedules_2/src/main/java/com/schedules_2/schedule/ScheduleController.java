@@ -32,11 +32,14 @@ public class ScheduleController {
     public ResponseEntity<SchduleCreateResponseDto> create(@RequestBody ScheduleCreateRequestDto scheduleCreateRequestDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.createSchedule(scheduleCreateRequestDto));
     }
+
+    //전체 조회
     @GetMapping
     public ResponseEntity<List<ScheduleGetAllResponseDto>> getAll() {
         return ResponseEntity.status(HttpStatus.OK).body(service.findAll());
     }
 
+    //단건 조회
     @GetMapping("/{scheduleId}")
     public ResponseEntity<ScheduleGetOneResponseDto> getOne(
             @PathVariable Long scheduleId

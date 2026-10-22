@@ -2,11 +2,14 @@ package com.schedules_2.User;
 
 import com.schedules_2.User.Dto.RequestDto.UserCreateRequestDto;
 import com.schedules_2.User.Dto.ResponseDto.UserCreateResponseDto;
+import com.schedules_2.User.Dto.ResponseDto.UserGetAllResponseDto;
+import com.schedules_2.User.Dto.ResponseDto.UserGetOneResponseDto;
 import com.schedules_2.User.Entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Locale;
 
 @Service
@@ -16,6 +19,8 @@ public class UserService {
     private final UserRepository userRepository;
 
     //생성자
+
+    //유저 생성
     @Transactional
     public UserCreateResponseDto createUser(UserCreateRequestDto requestDto) {
         User user = new User(
@@ -26,5 +31,34 @@ public class UserService {
         UserCreateResponseDto responseDto = new UserCreateResponseDto(savedUser.getId());
         return responseDto;
 
+    }
+
+    //전제 조회
+    @Transactional(readOnly = true)
+    public List<UserGetAllResponseDto> findAll() {
+        List<User> users = userRepository.findAll();
+        return users.stream().map(user -> new UserGetAllResponseDto(
+                user.getId(),
+                user.getName(),
+                user.getEmail(),
+                user.getCreateAt(),
+                user.getModifiedAt()
+        )).toList();
+
+    }
+
+    //단건 조회
+    @Transactional(readOnly = true)
+    public UserGetOneResponseDto findOne(Long userId) {
+        User user = userRepository.findById(userId).orElseThrow(
+                () -> new IllegalStateException("존재하지 않는 유저입니다.")
+        );
+        return new UserGetOneResponseDto(
+                user.getId(),
+                user.getName(),
+                user.getEmail(),
+                user.getCreateAt(),
+                user.getModifiedAt()
+        );
     }
 }
