@@ -69,7 +69,7 @@ public class ScheduleService {
         Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow(
                 () -> new IllegalStateException("존재하지 않는 일정입니다.")
         );
-        schedule.updateTitleAndAuthor(
+        schedule.updateNameTitleContent(
                 request.getName(),
                 request.getTitle(),
                 request.getContent()

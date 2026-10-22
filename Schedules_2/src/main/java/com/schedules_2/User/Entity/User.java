@@ -28,4 +28,9 @@ public class User extends BassEntity {
         this.email = email;
     }
 
+    public void updateNameEmail(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+
 }
