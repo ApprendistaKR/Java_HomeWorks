@@ -28,6 +28,8 @@ public class ScheduleController {
     }
 
     //기능
+
+    //일정 생성
     @PostMapping
     public ResponseEntity<SchduleCreateResponseDto> create(@RequestBody ScheduleCreateRequestDto scheduleCreateRequestDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.createSchedule(scheduleCreateRequestDto));
@@ -47,6 +49,7 @@ public class ScheduleController {
         return ResponseEntity.status(HttpStatus.OK).body(service.findOne(scheduleId));
     }
 
+    //일정 수정
     @PutMapping("/{scheduleId}")
     public ResponseEntity<ScheduleUpdatResponseDto> update(
             @PathVariable Long scheduleId,
@@ -54,7 +57,7 @@ public class ScheduleController {
     ) {
         return ResponseEntity.status(HttpStatus.OK).body(service.update(scheduleId, request));
     }
-
+    //일정 삭제
     @DeleteMapping("/{scheduleId}")
     public void delete(
             @PathVariable Long scheduleId

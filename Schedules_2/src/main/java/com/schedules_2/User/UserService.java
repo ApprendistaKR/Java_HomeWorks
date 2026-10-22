@@ -1,9 +1,11 @@
 package com.schedules_2.User;
 
 import com.schedules_2.User.Dto.RequestDto.UserCreateRequestDto;
+import com.schedules_2.User.Dto.RequestDto.UserUpdateRequestDto;
 import com.schedules_2.User.Dto.ResponseDto.UserCreateResponseDto;
 import com.schedules_2.User.Dto.ResponseDto.UserGetAllResponseDto;
 import com.schedules_2.User.Dto.ResponseDto.UserGetOneResponseDto;
+import com.schedules_2.User.Dto.ResponseDto.UserUpdateResponseDto;
 import com.schedules_2.User.Entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -54,6 +56,25 @@ public class UserService {
                 () -> new IllegalStateException("존재하지 않는 유저입니다.")
         );
         return new UserGetOneResponseDto(
+                user.getId(),
+                user.getName(),
+                user.getEmail(),
+                user.getCreateAt(),
+                user.getModifiedAt()
+        );
+    }
+
+    //유저 수정
+    @Transactional
+    public UserUpdateResponseDto update(Long userId, UserUpdateRequestDto request) {
+        User user = userRepository.findById(userId).orElseThrow(
+                () -> new IllegalStateException("존재하지 않는 유저입니다.")
+        );
+        user.updateNameEmail(
+                request.getName(),
+                request.getEmail()
+        );
+        return new UserUpdateResponseDto(
                 user.getId(),
                 user.getName(),
                 user.getEmail(),
