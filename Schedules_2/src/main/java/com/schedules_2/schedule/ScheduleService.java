@@ -48,7 +48,7 @@ public class ScheduleService {
     }
 
 
-    //단일 조회 기능
+    //단건 조회 기능
     @Transactional(readOnly = true)
     public ScheduleGetOneResponseDto findOne(Long scheduleId) {
         Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow(

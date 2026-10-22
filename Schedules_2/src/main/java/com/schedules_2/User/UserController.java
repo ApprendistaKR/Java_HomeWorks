@@ -2,12 +2,13 @@ package com.schedules_2.User;
 
 import com.schedules_2.User.Dto.RequestDto.UserCreateRequestDto;
 import com.schedules_2.User.Dto.ResponseDto.UserCreateResponseDto;
+import com.schedules_2.User.Dto.ResponseDto.UserGetAllResponseDto;
+import com.schedules_2.User.Dto.ResponseDto.UserGetOneResponseDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/users")
@@ -25,5 +26,20 @@ public class UserController {
     @PostMapping
     public ResponseEntity<UserCreateResponseDto> create(@RequestBody UserCreateRequestDto requestDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.createUser(requestDto));
+    }
+
+    //전체 조회
+    @GetMapping
+    public ResponseEntity<List<UserGetAllResponseDto>> findAll() {
+        return ResponseEntity.status(HttpStatus.OK).body(userService.findAll());
+    }
+
+    //단건 조회
+    @GetMapping("/{userId}")
+    public ResponseEntity<UserGetOneResponseDto> getOne(
+            @PathVariable Long userId
+    ) {
+        return ResponseEntity.status(HttpStatus.OK).body(userService.findOne(userId));
+
     }
 }

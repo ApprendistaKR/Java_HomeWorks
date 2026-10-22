@@ -1,5 +1,6 @@
 package com.schedules_2.User.Entity;
 
+import com.schedules_2.common.BassEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -9,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "User")
-public class User {
+public class User extends BassEntity {
     //속성
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
