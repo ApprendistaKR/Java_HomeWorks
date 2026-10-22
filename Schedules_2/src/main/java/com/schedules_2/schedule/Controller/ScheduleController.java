@@ -1,9 +1,11 @@
 package com.schedules_2.schedule.Controller;
 
+import com.schedules_2.schedule.Dto.RequestDto.SchduleUpdateRequestDto;
 import com.schedules_2.schedule.Dto.RequestDto.ScheduleCreateRequestDto;
 import com.schedules_2.schedule.Dto.ResponseDto.SchduleCreateResponseDto;
 import com.schedules_2.schedule.Dto.ResponseDto.ScheduleGetAllResponseDto;
 import com.schedules_2.schedule.Dto.ResponseDto.ScheduleGetOneResponseDto;
+import com.schedules_2.schedule.Dto.ResponseDto.ScheduleUpdatResponseDto;
 import com.schedules_2.schedule.Service.ScheduleService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +43,14 @@ public class ScheduleController {
             @PathVariable Long scheduleId
     ) {
         return ResponseEntity.status(HttpStatus.OK).body(service.findOne(scheduleId));
+    }
+
+    @PutMapping("/{scheduleId}")
+    public ResponseEntity<ScheduleUpdatResponseDto> update(
+            @PathVariable Long scheduleId,
+            @RequestBody SchduleUpdateRequestDto request
+    ) {
+        return ResponseEntity.status(HttpStatus.OK).body(service.update(scheduleId, request));
     }
 
 
