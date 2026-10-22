@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/schedules")
 public class ScheduleController {
     //속성
     private final ScheduleService service;
@@ -27,16 +27,16 @@ public class ScheduleController {
     }
 
     //기능
-    @PostMapping("/schedules")
+    @PostMapping
     public ResponseEntity<SchduleCreateResponseDto> create(@RequestBody ScheduleCreateRequestDto scheduleCreateRequestDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.createSchedule(scheduleCreateRequestDto));
     }
-    @GetMapping("/schedules")
+    @GetMapping
     public ResponseEntity<List<ScheduleGetAllResponseDto>> getAll() {
         return ResponseEntity.status(HttpStatus.OK).body(service.findAll());
     }
 
-    @GetMapping("/schedule/{scheduleId}")
+    @GetMapping("/{scheduleId}")
     public ResponseEntity<ScheduleGetOneResponseDto> getOne(
             @PathVariable Long scheduleId
     ) {
