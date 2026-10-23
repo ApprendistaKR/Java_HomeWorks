@@ -358,17 +358,19 @@
   | :--- |:-----------|:------------|
   | Content-Type | String | 데이터 형식 | 
 
-- Request body
+ Request body
   ```json
   {
    "name": "이름",
-   "email": "e메일 주소"
+   "email": "e메일 주소",
+   "password": "비밀번호"
   }
    ```
-  | 이름 | 데이터타입 | 설명       |
-  |:-----|:-----------|:-----------|
-  | name | String | 유저 이름  | 
-  | email   | String | e메일 주소 |
+  | 이름     | 데이터타입 | 설명                      |
+  |:---------|:-----------|:--------------------------|
+  | name     | String | 유저 이름                 | 
+  | email    | String | e메일 주소                |
+  | password | String | 설정할 비밀번호(8자 이상) |
   
 #### Response (응답)
 - Response header
@@ -558,17 +560,19 @@
   | :--- |:-----------|:------------|
   | Content-Type | String | 데이터 형식 | 
 
-- Request body
+ Request body
   ```json
   {
    "name": "이름",
-   "email": "e메일"
+   "email": "e메일",
+   "password": "비밀번호"
   }
    ```
-  | 이름  | 데이터타입 | 설명       |
-  |:------|:-----------|:-----------|
-  | name  | String | 유저 이름  | 
-  | email | String | e메일 주소 |
+  | 이름  | 데이터타입 | 설명                       |
+  |:------|:-----------|:---------------------------|
+  | name  | String | 유저 이름                  | 
+  | email | String | e메일 주소                 |
+  | password | String | 설정한 비밀번호 (8자 이상) |
 
 #### Response (응답)
 - Response header
@@ -673,7 +677,7 @@ ERD (Entity Relationship Diagram)
 | 칼럼 이름         | 데이터타입 | null허용 | key 종류 | 기본 값                     | 설명                    |
 |:------------------| :--- |:---------| :--- |:----------------------------|:------------------------|
 | **id**            | BIGINT(20) | NOT NULL | PK | AUTO_INCREMENT              | 일정 식별자             |
-| **name**          | VARCHAR(20) | NOT NULL | |                             | 작성자 이름             |
+| **user**          | VARCHAR(20) | NOT NULL | |                             | 유저 이름               |
 | **title**         | VARCHAR(30) | NOT NULL | |                             | 일정 제목               |
 | **content**       | VARCHAR(100) | NULL     | |                             | 일정 내용               |
 | **create_date**   | DATETIME | NOT NULL | | CURRENT_TIMESTAMP           | 일정 생성일             |
@@ -682,11 +686,12 @@ ERD (Entity Relationship Diagram)
 
 2. Users
 
-| 칼럼 이름         | 데이터타입 | null허용 | key 종류 | 기본 값                     | 설명                    |
-|:------------------| :--- |:---------| :--- |:----------------------------|:------------------------|
-| **id**            | BIGINT(20) | NOT NULL | PK | AUTO_INCREMENT              | 유저 식별자             |
+| 칼럼 이름         | 데이터타입  | null허용 | key 종류 | 기본 값                     | 설명                    |
+|:------------------|:------------|:---------| :--- |:----------------------------|:------------------------|
+| **id**            | BIGINT(20)  | NOT NULL | PK | AUTO_INCREMENT              | 유저 식별자             |
 | **name**          | VARCHAR(20) | NOT NULL | |                             | 유저 이름               |
 | **email**         | VARCHAR(30) | NOT NULL | |                             | email  주소             |
-| **create_date**   | DATETIME | NOT NULL | | CURRENT_TIMESTAMP           | 유저 생성일             |
-| **modified_date** | DATETIME | NOT NULL | | ON UPDATE CURRENT_TIMESTAMP | 유저 수정일             |
-| **is_delete**     | TINYINT(1) | NOT NULL | | 0                           | 0: 삭제 안됨, 1: 삭제됨 |
+| **password**      | VARCHAR(20)  | NOT NULL | |                             | 설정 비밀번호(8자 이상) |
+| **create_date**   | DATETIME    | NOT NULL | | CURRENT_TIMESTAMP           | 유저 생성일             |
+| **modified_date** | DATETIME    | NOT NULL | | ON UPDATE CURRENT_TIMESTAMP | 유저 수정일             |
+| **is_delete**     | TINYINT(1)  | NOT NULL | | 0                           | 0: 삭제 안됨, 1: 삭제됨 |
