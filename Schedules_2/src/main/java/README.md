@@ -23,16 +23,16 @@
 - Request body
   ```json
   {
-   "name": "이름",
+   "userId": "유저 식별자",
    "title": "제목",
    "content": "내용"
   }
    ```
-  | 이름 | 데이터타입 | 설명        |
-  |:-----|:-----------|:------------|
-  | name | String | 작성자 이름 | 
-  | title | String | 일정 제목   |
-  | content | String | 일정 내용   |
+  | 이름    | 데이터타입 | 설명                       |
+  |:--------|:-----------|:---------------------------|
+  | userId  | Long       | 일정 작성 유저 고유 식별자 | 
+  | title   | String     | 일정 제목                  |
+  | content | String     | 일정 내용                  |
   
 #### Response (응답)
 - Response header
@@ -45,9 +45,9 @@
    "id": 1
   }
   ```
-  | 이름      | 데이터타입    | 설명        |
-  |:----------|:--------------|:------------|
-  | id        | Long          | 일정 식별자 | 
+  | 이름      | 데이터타입    | 설명             |
+  |:----------|:--------------|:-----------------|
+  | id        | Long          | 일정 고유 식별자 | 
   
 
 - XXX 에러응답
@@ -93,34 +93,36 @@
   ```
   Response body
   ```json
-  [
+  {
+   "ScheduleList": [
     {
-     "id": 1,
-     "name": "이름",
-     "title": "제목",
-     "content": "내용",
-     "createdAt": "생성일시",
-     "modifiedAt": "수정일시"
-    },
-    {
-     "id": 2,
-     "name": "이름",
-     "title": "제목",
-     "content": "내용",
-     "createdAt": "생성일시",
-     "modifiedAt": "수정일시"
-    }
+      "id": 1,
+      "name": "이름",
+      "title": "제목",
+      "content": "내용",
+      "createdAt": "생성일시",
+      "modifiedAt": "수정일시"
+     }, {
+      "id": 2,
+      "name": "이름",
+      "title": "제목",
+      "content": "내용",
+      "createdAt": "생성일시",
+      "modifiedAt": "수정일시"
+     }
    ]
+  }
    ```
-  | 이름       | 데이터타입     | 설명        |
-  |:-----------|:---------------|:------------|
-  | id         | Long           | 일정 식별자 |
-  | name       | String         | 작성자 이름 |
-  | title      | String         | 일정 제목   |
-  | content    | String         | 일정 내용   |
-  | createdAt  | LocalDateTime  | 일정 생성일 |
-  | modifiedAt | LocalDateTime  | 일정 수정일 |
-
+  | 이름         | 데이터타입    | 설명                |
+  |:-------------|:--------------|:--------------------|
+  | ScheduleList | Array         | 일정 목록           |
+  | id           | Long          | 일정 고유 식별자    |
+  | name         | String        | 일정 작성 유저 이름 |
+  | title        | String        | 일정 제목           |
+  | content      | String        | 일정 내용           |
+  | createdAt    | LocalDateTime | 일정 생성일         |
+  | modifiedAt   | LocalDateTime | 일정 수정일         |
+  
 - XXX 에러응답
   ```json
   {
@@ -150,9 +152,9 @@
   ```
   /schedules/{scheduleId}
   ```
-  | 이름       | 데이터타입 | 설명         |
-  |:-----------|:-----------|:-------------|
-  | scheduleId | Long       | 일정 식별자  | 
+  | 이름       | 데이터타입 | 설명             |
+  |:-----------|:-----------|:-----------------|
+  | scheduleId | Long       | 일정 고유 식별자 | 
 
 - Request headers
   ```
@@ -180,14 +182,14 @@
     }
 
    ```
-  | 이름       | 데이터타입     | 설명        |
-  |:-----------|:---------------|:------------|
-  | id         | Long           | 일정 식별자 |
-  | name       | String         | 작성자 이름 |
-  | title      | String         | 일정 제목   |
-  | content    | String         | 일정 내용   |
-  | createdAt  | LocalDateTime  | 일정 생성일 |
-  | modifiedAt | LocalDateTime  | 일정 수정일 |
+  | 이름       | 데이터타입     | 설명                |
+  |:-----------|:---------------|:--------------------|
+  | id         | Long           | 일정 고유 식별자    |
+  | name       | String         | 일정 작성 유저 이름 |
+  | title      | String         | 일정 제목           |
+  | content    | String         | 일정 내용           |
+  | createdAt  | LocalDateTime  | 일정 생성일         |
+  | modifiedAt | LocalDateTime  | 일정 수정일         |
 
 - XXX 에러응답
   ```json
@@ -215,9 +217,9 @@
   ```
    /schedules/{scheduleId}
   ```
-  | 이름       | 데이터타입 | 설명         |
-  |:-----------|:-----------|:-------------|
-  | scheduleId | Long       | 일정 식별자  | 
+  | 이름       | 데이터타입 | 설명             |
+  |:-----------|:-----------|:-----------------|
+  | scheduleId | Long       | 일정 고유 식별자 | 
 
 - Request headers
   ```
@@ -230,16 +232,16 @@
 - Request body
   ```json
   {
-   "name": "이름",
+   "userId": "유저 고유 식별자",
    "title": "제목",
    "content": "내용"
   }
    ```
-  | 이름 | 데이터타입 | 설명        |
-  |:-----|:-----------|:------------|
-  | name | String | 작성자 이름 | 
-  | title | String | 일정 제목   |
-  | content | String | 일정 내용   |
+  | 이름    | 데이터타입 | 설명                       |
+  |:--------|:-----------|:---------------------------|
+  | userId  | Long       | 일정 수정 유저 고유 식별자 | 
+  | title   | String     | 일정 제목                  |
+  | content | String     | 일정 내용                  |
 
 #### Response (응답)
 - Response header
@@ -258,14 +260,14 @@
     }
 
    ```
-  | 이름       | 데이터타입     | 설명               |
-  |:-----------|:---------------|:-------------------|
-  | id         | Long           | 일정 식별자        |
-  | name       | String         | 수정한 작성자 이름 |
-  | title      | String         | 수정된 일정 제목   |
-  | content    | String         | 수정된 일정 내용   |
-  | createdAt  | LocalDateTime  | 일정 생성일        |
-  | modifiedAt | LocalDateTime  | 일정 수정일        |
+  | 이름       | 데이터타입     | 설명             |
+  |:-----------|:---------------|:-----------------|
+  | id         | Long           | 일정 고유 식별자 |
+  | name       | String         | 수정한 유저 이름 |
+  | title      | String         | 수정된 일정 제목 |
+  | content    | String         | 수정된 일정 내용 |
+  | createdAt  | LocalDateTime  | 일정 생성일      |
+  | modifiedAt | LocalDateTime  | 일정 수정일      |
 
 - XXX 에러응답
   ```json
@@ -293,9 +295,9 @@
   ```
    /schedules/{scheduleId}
   ```
-  | 이름       | 데이터타입 | 설명         |
-  |:-----------|:-----------|:-------------|
-  | scheduleId | Long       | 일정 식별자  | 
+  | 이름       | 데이터타입 | 설명             |
+  |:-----------|:-----------|:-----------------|
+  | scheduleId | Long       | 일정 고유 식별자 | 
 
 - Request headers
   ```
@@ -379,9 +381,9 @@
    "id": 1
   }
   ```
-  | 이름      | 데이터타입    | 설명        |
-  |:----------|:--------------|:------------|
-  | id        | Long          | 유저 식별자 | 
+  | 이름      | 데이터타입    | 설명             |
+  |:----------|:--------------|:-----------------|
+  | id        | Long          | 유저 고유 식별자 | 
 
 
 - XXX 에러응답
@@ -444,13 +446,13 @@
     }
    ]
    ```
-  | 이름       | 데이터타입     | 설명        |
-  |:-----------|:---------------|:------------|
-  | id         | Long           | 유저 식별자 |
-  | name       | String         | 유저 이름   |
-  | email      | String         | e메일 주소  |
-  | createdAt  | LocalDateTime  | 유저 생성일 |
-  | modifiedAt | LocalDateTime  | 유저 수정일 |
+  | 이름       | 데이터타입     | 설명             |
+  |:-----------|:---------------|:-----------------|
+  | id         | Long           | 유저 고유 식별자 |
+  | name       | String         | 유저 이름        |
+  | email      | String         | e메일 주소       |
+  | createdAt  | LocalDateTime  | 유저 생성일      |
+  | modifiedAt | LocalDateTime  | 유저 수정일      |
 
 -  에러응답
   ```json
@@ -481,9 +483,9 @@
   ```
   /users/{userId}
   ```
-  | 이름   | 데이터타입 | 설명        |
-  |:-------|:-----------|:------------|
-  | userId | Long       | 유저 식별자 | 
+  | 이름   | 데이터타입 | 설명             |
+  |:-------|:-----------|:-----------------|
+  | userId | Long       | 유저 고유 식별자 | 
 
 - Request headers
   ```
@@ -510,13 +512,13 @@
     }
 
    ```
-  | 이름       | 데이터타입     | 설명        |
-  |:-----------|:---------------|:------------|
-  | id         | Long           | 유저 식별자 |
-  | name       | String         | 유저 이름   |
-  | email      | String         | e메일  주소 |
-  | createdAt  | LocalDateTime  | 유저 생성일 |
-  | modifiedAt | LocalDateTime  | 유저 수정일 |
+  | 이름       | 데이터타입     | 설명             |
+  |:-----------|:---------------|:-----------------|
+  | id         | Long           | 유저 고유 식별자 |
+  | name       | String         | 유저 이름        |
+  | email      | String         | e메일  주소      |
+  | createdAt  | LocalDateTime  | 유저 생성일      |
+  | modifiedAt | LocalDateTime  | 유저 수정일      |
 
 - 에러응답
   ```json
@@ -544,9 +546,9 @@
   ```
    /users/{userId}
   ```
-  | 이름   | 데이터타입 | 설명        |
-  |:-------|:-----------|:------------|
-  | userId | Long       | 유저 식별자 | 
+  | 이름   | 데이터타입 | 설명             |
+  |:-------|:-----------|:-----------------|
+  | userId | Long       | 유저 고유 식별자 | 
 
 - Request headers
   ```
@@ -586,7 +588,7 @@
    ```
   | 이름       | 데이터타입     | 설명              |
   |:-----------|:---------------|:------------------|
-  | id         | Long           | 유저 식별자       |
+  | id         | Long           | 유저 고유 식별자  |
   | name       | String         | 수정된 유저 이름  |
   | email      | String         | 수정된 e메일 주소 |
   | createdAt  | LocalDateTime  | 유저 생성일       |
@@ -618,9 +620,9 @@
   ```
    /users/{userId}
   ```
-  | 이름   | 데이터타입 | 설명        |
-  |:-------|:-----------|:------------|
-  | userId | Long       | 유저 식별자 | 
+  | 이름   | 데이터타입 | 설명             |
+  |:-------|:-----------|:-----------------|
+  | userId | Long       | 유저 고유 식별자 | 
 
 - Request headers
   ```
