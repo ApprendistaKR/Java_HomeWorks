@@ -7,10 +7,12 @@ import lombok.Getter;
 public class UserUpdateRequestDto {
     private String name;
     private String email;
+    private String password;
 
-    public UserUpdateRequestDto(String name, String email) {
+    public UserUpdateRequestDto(String name, String email, String password) {
         this.name = name;
         this.email = email;
+        this.password = password;
 
     }
 }

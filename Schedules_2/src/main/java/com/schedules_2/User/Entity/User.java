@@ -6,6 +6,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -22,10 +23,14 @@ public class User extends BassEntity {
     @Column(nullable = false, length = 40)
     private String email;
 
+    @Column(nullable = false, length = 20)
+    private String password;
+
     //생성자
-    public User(String name, String email) {
+    public User(String name, String email, String password) {
         this.name = name;
         this.email = email;
+        this.password = password;
     }
 
     public void updateNameEmail(String name, String email) {
