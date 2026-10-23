@@ -1,5 +1,7 @@
 package com.schedules_2.schedule;
 
+import com.schedules_2.User.Entity.User;
+import com.schedules_2.User.UserRepository;
 import com.schedules_2.schedule.Dto.RequestDto.SchduleUpdateRequestDto;
 import com.schedules_2.schedule.Dto.RequestDto.ScheduleCreateRequestDto;
 import com.schedules_2.schedule.Dto.ResponseDto.SchduleCreateResponseDto;
@@ -17,14 +19,20 @@ import java.util.List;
 public class ScheduleService {
     //속성
     private final ScheduleRepository scheduleRepository;
+    private final UserRepository userRepository;
 
     //기능
 
     //생성 기능
     @Transactional
     public SchduleCreateResponseDto createSchedule(ScheduleCreateRequestDto scheduleCreateRequestDto) {
+
+        User user = userRepository.findById(scheduleCreateRequestDto.getUserId())
+                .orElseThrow(() -> new IllegalArgumentException(
+                        "존재하지 않는 유저입니다. ID: " + scheduleCreateRequestDto.getUserId()));
+
         Schedule schedule = new Schedule(
-                scheduleCreateRequestDto.getName(),
+               user,
                 scheduleCreateRequestDto.getTitle(),
                 scheduleCreateRequestDto.getContent()
         );
@@ -39,7 +47,7 @@ public class ScheduleService {
         List<Schedule> schedules = scheduleRepository.findAll();
         return schedules.stream().map(schedule -> new ScheduleGetAllResponseDto(
                 schedule.getId(),
-                schedule.getName(),
+                schedule.getUser().getName(),
                 schedule.getTitle(),
                 schedule.getContent(),
                 schedule.getCreateAt(),
@@ -56,7 +64,7 @@ public class ScheduleService {
         );
         return new ScheduleGetOneResponseDto(
                 schedule.getId(),
-                schedule.getName(),
+                schedule.getUser().getName(),
                 schedule.getTitle(),
                 schedule.getContent(),
                 schedule.getCreateAt(),
@@ -69,14 +77,17 @@ public class ScheduleService {
         Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow(
                 () -> new IllegalStateException("존재하지 않는 일정입니다.")
         );
+        User user = userRepository.findById(request.getUserId()).orElseThrow(
+                () -> new IllegalArgumentException("존재하지 않는 유저입니다.")
+        );
         schedule.updateNameTitleContent(
-                request.getName(),
+                user,
                 request.getTitle(),
                 request.getContent()
         );
         return new ScheduleUpdatResponseDto(
                 schedule.getId(),
-                schedule.getName(),
+                schedule.getUser().getName(),
                 schedule.getTitle(),
                 schedule.getContent(),
                 schedule.getCreateAt(),

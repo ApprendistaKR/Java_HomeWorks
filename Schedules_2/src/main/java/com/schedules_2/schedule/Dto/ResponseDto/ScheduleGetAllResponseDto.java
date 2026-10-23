@@ -1,5 +1,6 @@
 package com.schedules_2.schedule.Dto.ResponseDto;
 
+import com.schedules_2.User.Entity.User;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
