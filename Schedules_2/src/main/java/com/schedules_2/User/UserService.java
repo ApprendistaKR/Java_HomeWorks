@@ -27,9 +27,15 @@ public class UserService {
     //유저 생성
     @Transactional
     public UserCreateResponseDto createUser(UserCreateRequestDto requestDto) {
+
+        if (requestDto.getPassword() == null || requestDto.getPassword().length() < 8) {
+            throw new IllegalArgumentException("비밀번호는 8자 이상이어야 합니다.");
+        }
+
         User user = new User(
                 requestDto.getName(),
-                requestDto.getEmail()
+                requestDto.getEmail(),
+                requestDto.getPassword()
         );
         User savedUser = userRepository.save(user);
         UserCreateResponseDto responseDto = new UserCreateResponseDto(savedUser.getId());
@@ -69,9 +75,19 @@ public class UserService {
     //유저 수정
     @Transactional
     public UserUpdateResponseDto update(Long userId, UserUpdateRequestDto request) {
+
         User user = userRepository.findById(userId).orElseThrow(
                 () -> new IllegalStateException("존재하지 않는 유저입니다.")
         );
+
+        if (!request.getPassword().equals(user.getPassword())) {
+            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
+        }
+
+        if (request.getPassword() == null || request.getPassword().length() < 8) {
+            throw new IllegalArgumentException("비밀번호는 8자 이상이어야 합니다.");
+        }
+
         user.updateNameEmail(
                 request.getName(),
                 request.getEmail()
