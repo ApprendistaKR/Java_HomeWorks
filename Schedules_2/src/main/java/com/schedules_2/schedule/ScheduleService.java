@@ -71,6 +71,7 @@ public class ScheduleService {
                 schedule.getModifiedAt()
         );
     }
+
     //일정 수정
     @Transactional
     public ScheduleUpdatResponseDto update(Long scheduleId, SchduleUpdateRequestDto request) {
