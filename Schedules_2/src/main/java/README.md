@@ -285,7 +285,7 @@
   | message  | String     | 에러 상세 메세지 |
   | path     | String     | 요청 경로        |
 
-### 5. 일정 석제
+### 5. 일정 삭제
 | 항목 | 내용                               |
 |:-----|:-----------------------------------|
 | URL  | example.com/schedules/{scheduleId} |
@@ -614,7 +614,7 @@
   | message  | String     | 에러 상세 메세지 |
   | path     | String     | 요청 경로        |
 
-### 5. 일정 석제
+### 5. 유저 삭제
 | 항목 | 내용                       |
 |:-----|:---------------------------|
 | URL  | example.com/users/{userId} |
@@ -662,6 +662,120 @@
   ```
   | 이름     | 데이터타입 | 설명             |
   |:---------|:-----------|:-----------------|
+  | status   | Integer    | HTTP 상태코드    | 
+  | error    | String     | 에러 종류        | 
+  | message  | String     | 에러 상세 메세지 |
+  | path     | String     | 요청 경로        |
+
+
+### 6. 유저 로그인
+| 항목 | 내용                    |
+|:-----|:------------------------|
+| URL  | example.com/users/login |
+| Method | POST                    |
+#### Request (요청)
+- Parameter & Querystring
+  ```
+   none
+  ```
+
+- Request headers
+  ```
+  Content-Type: application/json
+  ```
+  | 이름 | 데이터타입 | 설명        |
+  | :--- |:-----------|:------------|
+  | Content-Type | String | 데이터 형식 | 
+
+- Request body
+  ```json
+  {
+   "email": "user@example.com",
+   "password": "password123!"
+  }
+  ```
+  | 이름  | 데이터타입 | 설명                         |
+  |:------|:-----------|:-----------------------------|
+  | email | String | e메일 주소                   |
+  | password | String | 설정한 비밀번호 (8자 이상)   |
+
+#### Response (응답)
+- Response header
+  ```
+  Set-Cookie: JSESSIONID=AbCdEfGhIjKlMnOpQrStUvWxYz...
+  ```
+  | 이름       | 데이터타입 | 설명                                   |
+  |:-----------|:-----------|:---------------------------------------|
+  | Set-Cokkie | String | 서버 섹션 관리를 위한 쿠키(JSESSIONID) |
+- Response body
+   ```
+   none
+   ```
+
+- 에러응답
+  ```json
+  {
+   "status": 400,
+   "error": "Bad Request",
+   "message": "잘못된 요청입니다.",
+   "path": "/users/login"
+  }
+  ```
+  | 이름     | 데이터타입 | 설명             |
+    |:---------|:-----------|:-----------------|
+  | status   | Integer    | HTTP 상태코드    | 
+  | error    | String     | 에러 종류        | 
+  | message  | String     | 에러 상세 메세지 |
+  | path     | String     | 요청 경로        |
+
+### 7. 유저 로그아웃
+| 항목 | 내용                     |
+|:-----|:-------------------------|
+| URL  | example.com/users/logout |
+| Method | POST                     |
+#### Request (요청)
+- Parameter & Querystring
+  ```
+   none
+  ```
+
+- Request headers
+  ```
+  Cookie: JSESSIONID=AbCdEfGhIjKlMnOpQrStUvWxYz...
+  ```
+  | 이름   | 데이터타입 | 설명                         |
+  |:-------|:-----------|:-----------------------------|
+  | Cookie | String | 로그인 시 발급받은 섹션 쿠키 | 
+
+- Request body
+  ```
+  none
+  ```
+
+#### Response (응답)
+- Response header
+  ```
+  Set-Cookie: JSESSIONID=; Max-Age=0; Expires=...
+  ```
+  | 이름       | 데이터타입 | 설명                              |
+  |:-----------|:-----------|:----------------------------------|
+  | Set-Cokkie | String | 만료 처리된 섹션 쿠키 (쿠키 삭제) |
+- Response body
+   ```
+   none
+   ```
+
+- 에러응답
+  ```json
+  {
+   "status": 400,
+   "error": "Bad Request",
+   "message": "잘못된 요청입니다.",
+   "path": "/users/logout"
+  }
+  ```
+  | 이름     | 데이터타입 | 설명             |
+      |:---------|:-----------|:-----------------|
   | status   | Integer    | HTTP 상태코드    | 
   | error    | String     | 에러 종류        | 
   | message  | String     | 에러 상세 메세지 |
