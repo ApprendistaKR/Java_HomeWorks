@@ -1,16 +1,15 @@
 package com.schedules_2.User;
 
 import com.schedules_2.User.Dto.RequestDto.UserCreateRequestDto;
+import com.schedules_2.User.Dto.RequestDto.UserLoginRequestDto;
 import com.schedules_2.User.Dto.RequestDto.UserUpdateRequestDto;
-import com.schedules_2.User.Dto.ResponseDto.UserCreateResponseDto;
-import com.schedules_2.User.Dto.ResponseDto.UserGetAllResponseDto;
-import com.schedules_2.User.Dto.ResponseDto.UserGetOneResponseDto;
-import com.schedules_2.User.Dto.ResponseDto.UserUpdateResponseDto;
+import com.schedules_2.User.Dto.ResponseDto.*;
 import com.schedules_2.User.Entity.User;
 import com.schedules_2.schedule.Entity.Schedule;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.List;
@@ -105,9 +104,23 @@ public class UserService {
     @Transactional
     public void delete(Long userId) {
         User user = userRepository.findById(userId).orElseThrow(
-                () -> new IllegalStateException("존재하지 않는 일정입니다.")
+                () -> new IllegalStateException("존재하지 않는 유저입니다.")
         );
         userRepository.deleteById(userId);
+    }
+
+    // 로그인 기능
+    @Transactional(readOnly = true)
+    public SessionUserDto login(@Validated UserLoginRequestDto requestDto) {
+        User user = userRepository.findByEmail(requestDto.getEmail()).orElseThrow(
+                () -> new IllegalStateException("존재하지 않는 유저입니다.")
+        );
+
+        return new SessionUserDto(
+                user.getId(),
+                user.getName(),
+                user.getEmail()
+        );
     }
 
 }

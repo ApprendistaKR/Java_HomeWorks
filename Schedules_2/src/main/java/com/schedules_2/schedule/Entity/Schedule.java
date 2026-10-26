@@ -37,7 +37,6 @@ public class Schedule extends BassEntity {
         this.content = content;
 
     }
-
     public void updateNameTitleContent(User user, String title, String content) {
         this.user = user;
         this.title = title;

@@ -1,13 +1,13 @@
 package com.schedules_2.User;
 
 import com.schedules_2.User.Dto.RequestDto.UserCreateRequestDto;
+import com.schedules_2.User.Dto.RequestDto.UserLoginRequestDto;
 import com.schedules_2.User.Dto.RequestDto.UserUpdateRequestDto;
-import com.schedules_2.User.Dto.ResponseDto.UserCreateResponseDto;
-import com.schedules_2.User.Dto.ResponseDto.UserGetAllResponseDto;
-import com.schedules_2.User.Dto.ResponseDto.UserGetOneResponseDto;
-import com.schedules_2.User.Dto.ResponseDto.UserUpdateResponseDto;
+import com.schedules_2.User.Dto.ResponseDto.*;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +30,15 @@ public class UserController {
     public ResponseEntity<UserCreateResponseDto> create(@RequestBody UserCreateRequestDto requestDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.createUser(requestDto));
     }
+
+    //유저 로그인
+    @PostMapping("/login")
+    public ResponseEntity<Void> login(@Validated @RequestBody UserLoginRequestDto request, HttpSession session) {
+        SessionUserDto sessionUser = userService.login(request);
+        session.setAttribute("loginUser", sessionUser);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
 
     //전체 조회
     @GetMapping
