@@ -39,6 +39,21 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
+    //유저 로그아웃
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout(
+            @SessionAttribute(name = "loginUser", required = false)
+            SessionUserDto sessionUser,
+            HttpSession session
+    ) {
+        if (sessionUser == null) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        session.invalidate();
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
 
     //전체 조회
     @GetMapping
@@ -62,6 +77,7 @@ public class UserController {
     ) {
         return ResponseEntity.status(HttpStatus.OK).body(userService.update(userId, request));
     }
+
     //유저 삭제
     @DeleteMapping("/{userId}")
     public void delete(
